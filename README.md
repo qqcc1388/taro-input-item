@@ -32,6 +32,7 @@ mode：select类型用到了Picker顺带这就把picker的几种类型也加入�
 
 对应代码分析
 1.input 输入监听和返回
+
 ![](https://img2022.cnblogs.com/blog/950551/202204/950551-20220426172644738-505429154.jpg)
 
 ```
@@ -74,6 +75,7 @@ type === "input" ? (
           ></InputItem>
 ```
 2.text 直接显示无需回调
+
 ![](https://img2022.cnblogs.com/blog/950551/202204/950551-20220426172701528-129329194.jpg)
 
 ```
@@ -88,6 +90,7 @@ type === "input" ? (
 ></InputItem>
 ```
 3.radio 通过radios动态创建多个radio并通过onRadioChange接收用户的操作变化
+
 ![](https://img2022.cnblogs.com/blog/950551/202204/950551-20220426172719284-2115305062.jpg)
 
 ```
@@ -133,6 +136,7 @@ type === "input" ? (
 ></InputItem>
 ```
 4.number 用到了taro-ui中的AtInputNumber
+
 ![](https://img2022.cnblogs.com/blog/950551/202204/950551-20220426172803528-2118823499.jpg)
 
 ```
@@ -178,6 +182,7 @@ type === "number" && (
 
 ```
 5.select  通过传入mode的不同Picker显示不同的mode 包含单选 多选 日期 时间 省市区选择
+
 <div style="text-align:left">
 <img src="https://img2022.cnblogs.com/blog/950551/202204/950551-20220426172833839-196607168.jpg" width="19%" height="19%">  
 <img src="https://img2022.cnblogs.com/blog/950551/202204/950551-20220426172842890-926404148.jpg" width="19%" height="19%">  
