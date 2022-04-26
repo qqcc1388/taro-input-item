@@ -4,7 +4,9 @@
 ![](https://img2022.cnblogs.com/blog/950551/202204/950551-20220426162151773-1494713079.jpg)
 
 根据相识度，将InputItem分成对应的几种类型 通过传参的方式显示不用的类型
+
 InputItem组件中主要参数定义：
+```
 type类型  取值范围：input | text | radio | number | select  几种类型
       input：类型为带输入框的样式 默认类型
       text：类型为值类型 显示在最右边显示一个不可编辑的text
@@ -26,6 +28,7 @@ mode：select类型用到了Picker顺带这就把picker的几种类型也加入�
         dater日期滚轴 点击返回选中的日期
         time时间滚轴 点击返回选中的时间
         region省市区滚轴  点击返回vlaues值通过separator分隔的value 和 选中的对象列表data
+```
 
 对应代码分析
 1.input 输入监听和返回
