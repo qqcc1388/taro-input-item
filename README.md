@@ -54,7 +54,6 @@ type === "input" ? (
   /// Input输入变化回调  通知引用方通过onValueChange保存键盘输入变化
   onInputValueChange = (e) => {
     const { value } = e.detail
-    this.props.value = value
     if (this.props.onValueChange) {
       this.props.onValueChange(value)
     }
@@ -114,7 +113,6 @@ type === "input" ? (
   /// radio状态变化
   onRadioChange = (e) => {
     const { value } = e.detail
-    this.props.value = value
     if (this.props.onValueChange) {
       this.props.onValueChange(value)
     }
@@ -158,7 +156,6 @@ type === "number" && (
 
   /// InputNumber数据变化回调
   onInputNumberChange = (value) => {
-    this.props.value = value
     if (this.props.onNumberChange) {
       this.props.onNumberChange(value)
     }
@@ -219,7 +216,6 @@ type === "number" && (
     const { rangeKey } = this.props
     const data = this.props.pickerItems[e.detail.value]
     const value = data[rangeKey]
-    this.props.value = value
     if (this.props.onPickerChange) {
       this.props.onPickerChange(value, data)
     }
@@ -237,7 +233,6 @@ type === "number" && (
       list.push(data)
     }
     value = values.join(this.props.separator)
-    this.props.value = value
     if (this.props.onPickerChange) {
       this.props.onPickerChange(value, list)
     }
@@ -245,7 +240,6 @@ type === "number" && (
 
   onDatePickerItemChange = (e) => {
     const { value } = e.detail
-    this.props.value = value
     if (this.props.onPickerChange) {
       this.props.onPickerChange(value)
     }
@@ -253,7 +247,6 @@ type === "number" && (
 
   onTimePickerItemChange = (e) => {
     const { value } = e.detail
-    this.props.value = value
     if (this.props.onPickerChange) {
       this.props.onPickerChange(value)
     }
@@ -261,7 +254,6 @@ type === "number" && (
 
   onRegionPickerItemChange = (e) => {
     const { value, postcode, code } = e.detail
-    this.props.value = value
     if (this.props.onPickerChange) {
       this.props.onPickerChange(value, postcode, code)
     }
