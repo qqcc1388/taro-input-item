@@ -1,17 +1,19 @@
 import React, { Component } from "react"
 import { View, Input, Image, Picker, Radio, RadioGroup } from "@tarojs/components"
 import { AtInputNumber, AtInput, AtCheckbox } from "taro-ui"
-import Assets from "@/assets"
 import "./index.scss"
 
 export default class InputItem extends Component {
+
   constructor(props) {
     super(props)
+    this.state = {
+      ...props
+    }
   }
 
   /// InputNumber数据变化回调
   onInputNumberChange = (value) => {
-    this.props.value = value
     if (this.props.onNumberChange) {
       this.props.onNumberChange(value)
     }
@@ -20,7 +22,6 @@ export default class InputItem extends Component {
   /// radio状态变化
   onRadioChange = (e) => {
     const { value } = e.detail
-    this.props.value = value
     if (this.props.onValueChange) {
       this.props.onValueChange(value)
     }
@@ -29,7 +30,6 @@ export default class InputItem extends Component {
   /// Input输入变化回调
   onInputValueChange = (e) => {
     const { value } = e.detail
-    this.props.value = value
     if (this.props.onValueChange) {
       this.props.onValueChange(value)
     }
@@ -39,7 +39,6 @@ export default class InputItem extends Component {
     const { rangeKey } = this.props
     const data = this.props.pickerItems[e.detail.value]
     const value = data[rangeKey]
-    this.props.value = value
     if (this.props.onPickerChange) {
       this.props.onPickerChange(value, data)
     }
@@ -57,7 +56,6 @@ export default class InputItem extends Component {
       list.push(data)
     }
     value = values.join(this.props.separator)
-    this.props.value = value
     if (this.props.onPickerChange) {
       this.props.onPickerChange(value, list)
     }
@@ -65,7 +63,6 @@ export default class InputItem extends Component {
 
   onDatePickerItemChange = (e) => {
     const { value } = e.detail
-    this.props.value = value
     if (this.props.onPickerChange) {
       this.props.onPickerChange(value)
     }
@@ -73,7 +70,6 @@ export default class InputItem extends Component {
 
   onTimePickerItemChange = (e) => {
     const { value } = e.detail
-    this.props.value = value
     if (this.props.onPickerChange) {
       this.props.onPickerChange(value)
     }
@@ -81,37 +77,17 @@ export default class InputItem extends Component {
 
   onRegionPickerItemChange = (e) => {
     const { value, postcode, code } = e.detail
-    this.props.value = value
     if (this.props.onPickerChange) {
       this.props.onPickerChange(value, postcode, code)
     }
   }
 
   render() {
-    const title = this.props.title
-    const subTitle = this.props.subTitle
-    const placeholder = this.props.placeholder || '请输入'
-    const type = this.props.type || 'input'
-    const borderBottom = this.props.borderBottom/// 是否显示底部border
-    const borderTop = this.props.borderTop === false ? false : true
-    const editable = this.props.editable  // 是否可以编辑
-    const min = this.props.min || 1
-    const max = this.props.max || 99999
-    const maxlength = this.props.maxlength
-    const inputType = this.props.inputType || 'text'
-    const pickerItems = this.props.pickerItems || []
-    const mode = this.props.mode || 'selector'
-    const rangeKey = this.props.rangeKey || 'value'
-    const separator = this.props.separator || ''
-    const radios = this.props.radios || []
-    const step = this.props.step || 1
-    const disabledInput = this.props.disabledInput || false
 
-    const { value } = this.props
-
+    const { title, subTitle, placeholder, type, borderBottom, borderTop, editable, min, max, maxlength, inputType, pickerItems, mode, rangeKey, separator, radios, step, disabledInput, value } = this.props
     const region = ['北京市']
+    const arrow = 'https://kz-fe.oss-cn-hangzhou.aliyuncs.com/static/kzqipeimall/img/ic_arrow_right_gray.png'
 
-    const arrow = Assets("ic_arrow_right_gray.png")
     return (
       <View className="inputItem">
         <View className={`container ${borderBottom ? "borderBottom" : ""} ${borderTop ? "borderTop" : ""}`}>
@@ -192,4 +168,26 @@ export default class InputItem extends Component {
       </View >
     )
   }
+}
+
+/// 设置默认值
+InputItem.defaultProps = {
+  title: '',           // 左标题
+  subTitle: '',        //副标题
+  placeholder: '请输入',//默认提示文案
+  type: 'input',       //显示类型  input | text | radio | select | number
+  borderBottom: false, // 下边线
+  borderTop: true,     // 上边线
+  editable: true,      // 是否可以编辑
+  maxlength: undefined,//输入框最大长度
+  inputType: 'text',   //键盘类型
+  pickerItems: [],     //select显示内容
+  mode: 'selector',    //Pcker类型   selector | multiSelector | time | region
+  rangeKey: 'value',   //select子级key
+  separator: '',       //多选分隔符
+  radios: [],          //radio显示内容
+  step: 1,             //inputNumber单步
+  disabledInput: false,//inputNumber是否支持输入
+  min: 1,              // inputNumber最小值
+  max: 99999,          // inputNumber最小值
 }
